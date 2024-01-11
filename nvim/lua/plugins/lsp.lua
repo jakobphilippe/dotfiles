@@ -1,6 +1,5 @@
 -- stylua: ignore
 return {
-  -- add pyright to lspconfig
   {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
@@ -23,6 +22,10 @@ return {
               }
             },
           }
+        },
+        templ = {
+          cmd = {"templ"},
+          filetypes = {"templ"},
         },
       },
     },
@@ -53,7 +56,8 @@ return {
         "gomod",
         "gowork",
         "gosum",
-        "svelte"
+        "svelte",
+        "templ"
       },
     },
   },
@@ -70,6 +74,7 @@ return {
         "gopls",
         "goimports",
         "gofumpt",
+        "templ"
       },
     },
   },

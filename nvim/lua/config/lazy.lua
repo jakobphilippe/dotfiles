@@ -52,3 +52,17 @@ require("notify").setup({
 vim.cmd("highlight GitSignsAdd guibg=NONE")
 vim.cmd("highlight GitSignsChange guibg=NONE")
 vim.cmd("highlight GitSignsDelete guibg=NONE")
+vim.filetype.add({ extension = { templ = "templ" } })
+
+local lspconfig = require("lspconfig")
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+
+local servers = { "gopls", "tsserver", "templ" }
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+end
